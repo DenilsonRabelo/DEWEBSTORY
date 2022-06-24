@@ -2,18 +2,42 @@
     <div>
         <form>
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Digite seu email" autocomplete="off">
+            <input type="email" id="email" placeholder="Digite seu email" autocomplete="off"  v-model="form.email">
             <label for="senha">Senha</label>
-            <input type="password" id="senha" placeholder="Digite sua senha" >
+            <input type="password" id="senha" placeholder="Digite sua senha" v-model="form.senha">
         </form>
         <div class="btn">
-            <button class="btn-entrar" type="submit">Entrar</button>
+            <button class="btn-entrar" @click="login" type="submit">Entrar</button>
             <button @click="$router.push('cadastro')" class="btn-cadastrar" type="submit">Cadastrar</button>
         </div>
     </div>
 </template>
 
 <script>
+    import axios from 'axios'
+ export default {   
+    data() { 
+        return {
+            form:{
+            email: "",
+            senha: "",
+            }
+        }
+    },
+  
+    methods:{
+        async login(){
+        const { data } = await axios.post('http://localhost:1337/api/auth/local', {
+        identifier: `${this.form.email}`,
+        password: `${this.form.senha}`,
+        });
+        if(data){
+            localStorage.setItem('usuario', JSON.stringify(data))
+            this.$router.push('home')
+        }
+        },
+    }
+}
 
 </script>
 

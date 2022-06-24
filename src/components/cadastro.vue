@@ -2,20 +2,46 @@
     <div>
         <form>
             <label for="text">Nome</label>
-            <input type="text" id="nome" placeholder="Digite seu nome" autocomplete="off" >
+            <input type="text" id="nome" placeholder="Digite seu nome" autocomplete="off" v-model="form.nome">
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Digite seu email" autocomplete="off" >
+            <input type="email" id="email" placeholder="Digite seu email" autocomplete="off" v-model="form.email">
             <label for="senha">Senha</label>
-            <input type="password" id="senha" placeholder="Digite sua senha">
+            <input type="password" id="senha" placeholder="Digite sua senha" v-model="form.senha">
         </form>
         <div class="btn">
-            <button @click="$router.push('Cadastro')" class="btn-cadastrar" type="submit">Cadastrar</button>
+            <button @click="cadastrar" class="btn-cadastrar" type="submit">Cadastrar</button>
         </div>
     </div>
 </template>
 
 <script>
-       
+import axios from 'axios'
+    export default {
+        data(){
+            return {
+            form:{
+                nome:"",
+                email:"",
+                senha:""
+            }
+            }
+        },
+        methods: {
+            cadastrar(){
+                fetch('http://localhost:1337/api/users', {
+                method: "POST",
+                body: JSON.stringify(this.form),
+                headers: {"Content-type": "application/json; charset=UTF-8"}
+                })
+                .then(response => response.json()) 
+                .then(json => console.log(json))
+                .catch(err => console.log(err))
+            }
+        }
+    }
+
+
+    
 </script>
 
 
