@@ -4,17 +4,52 @@
       <h2 class="logo"><span class="texto-logo">DEWEBSTORY</span></h2>
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#ancor_sobre">Sobre</a></li>
-        <li><a href="#ancor_servicos">Serviços</a></li>
-        <li><a href="#ancor_contato">Contato</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Serviços</a></li>
       </ul>
+      <div class="btn-group">
+      <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {{nome}}
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="logout" @click="logout()">Logout</a></li>
+        <li><a class="painel" v-if="adm == true" @click="$router.push('/painel')">Painel</a></li>
+      </ul>
+    </div>
     </nav>
   </div>
 </template>
 
-<script></script>
+<script>
+import axios from 'axios';
+  export default {
+      data(){
+        return {
+          nome:"",
+          adm : null,
+        }
+      },
 
-<style>
+    mounted(){
+      if(localStorage.getItem('nome')){
+        let nome1 = localStorage.getItem('nome')
+        nome1 = JSON.parse(nome1)
+        this.nome = nome1.username
+        this.adm = nome1.adm
+      }
+    },
+     methods: {
+      logout() {
+          localStorage.removeItem('usuario')
+          localStorage.removeItem('nome')
+          this.$router.push('/login')
+      },
+    }
+    
+}
+</script>
+
+<style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
     *,
     *::after,
@@ -57,12 +92,16 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    cursor: pointer;
     text-transform: capitalize;
 }
 
 nav ul li a:hover {
     color: crimson;
     transition: .3s;
+}
+.logout, .painel {
+  color : black;
 }
 
 

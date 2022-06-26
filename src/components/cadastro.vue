@@ -2,11 +2,11 @@
     <div>
         <form>
             <label for="text">Nome</label>
-            <input type="text" id="nome" placeholder="Digite seu nome" autocomplete="off" v-model="form.nome">
+            <input type="text" id="nome" placeholder="Digite seu nome" autocomplete="off" v-model="form.username">
             <label for="email">Email</label>
             <input type="email" id="email" placeholder="Digite seu email" autocomplete="off" v-model="form.email">
             <label for="senha">Senha</label>
-            <input type="password" id="senha" placeholder="Digite sua senha" v-model="form.senha">
+            <input type="password" id="senha" placeholder="Digite sua senha" v-model="form.password">
         </form>
         <div class="btn">
             <button @click="cadastrar" class="btn-cadastrar" type="submit">Cadastrar</button>
@@ -20,32 +20,31 @@ import axios from 'axios'
         data(){
             return {
             form:{
-                nome:"",
+                username:"",
                 email:"",
-                senha:""
+                password:""
             }
             }
         },
         methods: {
-            cadastrar(){
-                fetch('http://localhost:1337/api/users', {
-                method: "POST",
-                body: JSON.stringify(this.form),
-                headers: {"Content-type": "application/json; charset=UTF-8"}
-                })
-                .then(response => response.json()) 
-                .then(json => console.log(json))
-                .catch(err => console.log(err))
-            }
+            async cadastrar(){
+                try {
+                const response = await axios.post('http://localhost:1337/api/users', this.form)
+                console.log(response);
+                 this.$router.push('Login')
+                }catch (error) {
+                    this.error = error;
+                }
         }
     }
+}
 
 
     
 </script>
 
 
-<style>
+<style scoped>
     form {
         display: flex;
         flex-direction: column;

@@ -58,7 +58,7 @@
   </div>
 </template>
 <script></script>
-<style>
+<style scoped>
    *,
     *::after,
     *::before{

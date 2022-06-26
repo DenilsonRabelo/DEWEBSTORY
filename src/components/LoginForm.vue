@@ -32,6 +32,7 @@
         password: `${this.form.senha}`,
         });
         if(data){
+            localStorage.setItem('nome', JSON.stringify(data.user))
             localStorage.setItem('usuario', JSON.stringify(data))
             this.$router.push('home')
         }
@@ -41,7 +42,7 @@
 
 </script>
 
-<style>
+<style scoped>
     form {
         display: flex;
         flex-direction: column;
