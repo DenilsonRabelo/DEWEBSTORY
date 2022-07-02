@@ -2,7 +2,7 @@
 
 import navBar from "../components/navBar.vue"
 import slide from "../components/slide.vue"
-import listaProduto from "../components/listaproduto.vue"
+import listaProduto from "../components/listaProduto.vue"
 import produto from "../components/produto.vue"
 import axios from 'axios'
 
@@ -16,6 +16,7 @@ export default {
         produto,
     },
 };
+
 
 </script>
 
@@ -32,6 +33,7 @@ export default {
 
 <style scoped>
 * {
+    margin : 0;
     background-color: black;
     padding: 0;
     box-sizing: border-box;

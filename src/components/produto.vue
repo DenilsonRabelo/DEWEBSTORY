@@ -29,13 +29,10 @@ export default {
     }
   },
   async mounted () {
-    try {
+      const toke = localStorage.getItem("usuario")
       const response = await axios.get('http://localhost:1337/api/produtos')
       this.produtos = response.data.data
-    } catch (error) {
-      this.error = error;
-    }
-  },
+    },
 
   methods:{
     image(produtos){
@@ -49,6 +46,7 @@ export default {
 
 <style scoped>
     .card{
+        max-width:500px;
         height: 400px;
         text-align: center;
         border-radius: 20px;

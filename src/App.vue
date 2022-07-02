@@ -7,9 +7,9 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 <style>
 #app {
-  max-width: 1280px;
+  max-width: 100vw;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0rem;
   font-weight: normal;
 }
 </style>

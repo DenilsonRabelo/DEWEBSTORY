@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="a">
         <form>
             <label for="text">Nome</label>
             <input type="text" id="nome" placeholder="Digite seu nome" autocomplete="off" v-model="form.username">
@@ -30,7 +30,6 @@ import axios from 'axios'
             async cadastrar(){
                 try {
                 const response = await axios.post('http://localhost:1337/api/users', this.form)
-                console.log(response);
                  this.$router.push('Login')
                 }catch (error) {
                     this.error = error;
@@ -53,6 +52,7 @@ import axios from 'axios'
         padding-right: 20px;
         padding-top: 50px;
     }
+    
 
     label {
         text-align: start;

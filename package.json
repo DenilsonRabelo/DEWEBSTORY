@@ -17,6 +17,7 @@
     "bootstrap-vue": "^2.22.0",
     "pinia": "^2.0.13",
     "vue": "^3.2.37",
+    "vue-js-modal": "^2.0.1",
     "vue-router": "^4.0.14",
     "vuelidate": "^0.7.7"
   },

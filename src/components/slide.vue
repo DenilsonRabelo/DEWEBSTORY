@@ -66,9 +66,7 @@
         margin: 0;
         box-sizing: border-box;
         text-decoration: none;
+        background: white;
         
     }
-img{
-    height: 500px;
-}
 </style>

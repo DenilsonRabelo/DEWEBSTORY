@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="navbar">
     <nav>
       <h2 class="logo"><span class="texto-logo">DEWEBSTORY</span></h2>
       <ul>
@@ -13,7 +13,7 @@
       </button>
       <ul class="dropdown-menu">
         <li><a class="logout" @click="logout()">Logout</a></li>
-        <li><a class="painel" v-if="adm == true" @click="$router.push('/painel')">Painel</a></li>
+        <li><a class="painel" v-if="adm == 'admin'" @click="$router.push('/painel')">Painel</a></li>
       </ul>
     </div>
     </nav>
@@ -33,15 +33,18 @@ import axios from 'axios';
     mounted(){
       if(localStorage.getItem('nome')){
         let nome1 = localStorage.getItem('nome')
+        let role = localStorage.getItem('role')
+        role = JSON.parse(role)
         nome1 = JSON.parse(nome1)
         this.nome = nome1.username
-        this.adm = nome1.adm
+        this.adm = role
       }
     },
      methods: {
       logout() {
           localStorage.removeItem('usuario')
           localStorage.removeItem('nome')
+          localStorage.removeItem('role')
           this.$router.push('/login')
       },
     }
@@ -58,6 +61,7 @@ import axios from 'axios';
         margin: 0;
         box-sizing: border-box;
         text-decoration: none;
+  
         
     }
 
@@ -65,9 +69,14 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+    width:100vw;
     padding-left: 8%;
     padding-right: 8%;
+}
+
+.navbar {
+  width:100vw;
+  
 }
 
 .logo {

@@ -3,9 +3,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import Login from "../views/Login.vue";
 import Cadastro from "../views/Cadastro.vue";
 import Home from "../views/Home.vue";
-import Painel from "../views/admin/Painel.vue";
-import FormProduto from "../components/formProduto.vue";
-import FormDeleteProduto from "../components/formDeleteProduto.vue";
+import Painel from "../views/Painel.vue";
+import Criar from '../views/Criar.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -35,15 +34,10 @@ const router = createRouter({
       component: Painel,
     },
     {
-      path: "/formProduto",
-      name: "FormProduto",
-      component: FormProduto,
-    },
-    {
-      path: "/formDeleteProduto",
-      name: "FormDeleteProduto",
-      component: FormDeleteProduto,
-    },
+      path: "/criar",
+      name: "Criar",
+      component: Criar,
+    }
   ],
 });
 

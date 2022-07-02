@@ -21,8 +21,8 @@ export default {
 
 </template>
 
-<style>
-        *,
+<style scoped>
+    *,
     *::after,
     *::before{
         padding:  0;
