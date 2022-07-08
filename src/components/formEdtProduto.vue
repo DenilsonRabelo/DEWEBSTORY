@@ -10,8 +10,8 @@
             <label for="imagem">Link Imagem</label>
             <input type="text" id="imagem" v-model="form.image">
             <div class="btn">
-                <button class="btn-cadastrar cadastrar" @click="Editar(id)">Editar</button>
-                <button class="btn-cadastrar voltar" @click="this.$router.push('painel')">Voltar</button>
+                <button class="btn-editar editar" @click="Editar(produtos.id)">Editar</button>
+                <button class="btn-editar voltar" @click="this.$router.push('painel')">Voltar</button>
             </div>
         </form>
     </div>
@@ -19,6 +19,7 @@
 
 <script>
 import axios from 'axios'
+
 
 export default {  
     data() {
@@ -88,7 +89,7 @@ export default {
         justify-content: space-around;
     }
 
-    .btn-cadastrar {
+    .btn-editar {
         margin: 20px;
         border: none;
         padding: 10px 20px 10px 20px;
@@ -96,12 +97,12 @@ export default {
         transition: 1s;
     }
 
-    .btn-cadastrar:hover {
+    .btn-editar:hover {
         transform: scale(1.1);
         color: white;
     }
 
-    .cadastrar {
+    .editar {
         background-color: green;
 
     }
