@@ -4,7 +4,7 @@ import Login from "../views/Login.vue";
 import Cadastro from "../views/Cadastro.vue";
 import Home from "../views/Home.vue";
 import Painel from "../views/Painel.vue";
-import Criar from '../views/Criar.vue'
+import Criar from '../views/Criar.vue';
 import Editar from '../views/Editar.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

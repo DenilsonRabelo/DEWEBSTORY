@@ -12,9 +12,9 @@ export default {
     <formProdutoCriarVue></formProdutoCriarVue>
 </template>
 
-
 <style scoped>
     body{
         background-color: black;
     }
 </style>
+

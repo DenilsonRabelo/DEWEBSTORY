@@ -19,6 +19,7 @@
 
 <script>
 import axios from 'axios'
+
 export default {  
     data() { 
         return {
@@ -39,6 +40,7 @@ export default {
             await axios.post('http://localhost:1337/api/produtos',this.form,{
                 headers: {Authorization: `Bearer ${token.jwt}`}
             })
+            this.$router.push('painel')
             console.log("foi")
             } catch (error) {
                 console.log("erro")
