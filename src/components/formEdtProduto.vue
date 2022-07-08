@@ -10,7 +10,7 @@
             <label for="imagem">Link Imagem</label>
             <input type="text" id="imagem" v-model="form.image">
             <div class="btn">
-                <button class="btn-cadastrar cadastrar" @click="Criar($event)">Criar</button>
+                <button class="btn-cadastrar cadastrar" @click="Editar(id)">Editar</button>
                 <button class="btn-cadastrar voltar" @click="this.$router.push('painel')">Voltar</button>
             </div>
         </form>
@@ -21,7 +21,7 @@
 import axios from 'axios'
 
 export default {  
-    data() { 
+    data() {
         return {
             form:{
             name: "",
@@ -32,12 +32,11 @@ export default {
         }
     },
     methods:{
-        async Criar(e){
-            e.preventDefault()
+        async Editar(id){
             let token = localStorage.getItem("usuario")
             token = JSON.parse(token)
             try {
-            await axios.post('http://localhost:1337/api/produtos',{
+            await axios.put(`http://localhost:1337/api/produtos/${id}`,{
             data: {
                 name: this.form.name,
                 price: this.form.price,

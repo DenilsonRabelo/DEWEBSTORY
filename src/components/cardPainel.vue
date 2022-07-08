@@ -13,7 +13,7 @@
     <div class="card-footer bg-transparent">
       <div class="text-center btn">
         <a class="btn btn-outline-dark delete" @click="deletarItem(produtos.id)" href="#">Deletar</a>
-        <a  class="btn editar">Editar</a>
+        <router-link :to="`/editar/${produtos.id}`" class="btn editar">Editar</router-link>
       </div>
     </div>
   </div>
