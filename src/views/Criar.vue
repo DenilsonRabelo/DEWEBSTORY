@@ -1,5 +1,5 @@
 <template>
-<formProdutoCriarVue/>
+<formProdutoCriarVue></formProdutoCriarVue>
 </template>
 <script>
 import formProdutoCriarVue from '../components/formProdutoCriar.vue';

@@ -36,13 +36,7 @@ export default {
             let token = localStorage.getItem("usuario")
             token = JSON.parse(token)
             try {
-            await axios.post('http://localhost:1337/api/produtos',{
-            data: {
-                name: this.form.name,
-                price: this.form.price,
-                description: this.form.description,
-                image: this.form.image
-            }},{
+            await axios.post('http://localhost:1337/api/produtos',this.form,{
                 headers: {Authorization: `Bearer ${token.jwt}`}
             })
             console.log("foi")
