@@ -1,4 +1,5 @@
 <template>
+
   <div class="card" v-for="produtos in produtos" :key="produtos.id">
     <div class="d-flex justify-content-center">
       <img class="card-img-top" :src="produtos.attributes.image" />
@@ -28,6 +29,7 @@ export default {
     return {
       produtos: [],
       error: null,
+      estado : null
     };
     
   },
@@ -48,9 +50,10 @@ export default {
         await axios.delete(`http://localhost:1337/api/produtos/${id}`, {
           headers: { Authorization: `Bearer ${token.jwt}` },
         });
+        alert(`produto deletado com sucesso id: ${id}`)
         this.getItens();
       } catch (error) {
-        console.log("erro");
+        alert("algo de errado aconteceu");
       }
     },
 
@@ -83,9 +86,21 @@ export default {
 .delete {
   background-color: red;
   margin-left: 10px;
+  color: white;
+  transition: 2s;
 }
 .editar {
+  color: white;
   background-color: green;
+  transition: 2s;
+}
+
+.editar:hover {
+  transform: scale(1.1);
+}
+
+.delete:hover {
+  transform: scale(1.1);
 }
 
 img {

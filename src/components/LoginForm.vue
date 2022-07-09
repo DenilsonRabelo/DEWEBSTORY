@@ -1,5 +1,11 @@
 <template>
   <div class="a">
+    <div v-if="form.estado == false" class="alert alert-warning" role="alert">
+      Algo de errado aconteceu com o login
+    </div>
+    <div v-if="form.estado == true" class="alert alert-success" role="alert">
+      login realizado
+    </div>
     <form>
       <label for="email">Email</label>
       <input
@@ -38,12 +44,14 @@ export default {
       form: {
         email: "",
         senha: "",
+        estado : null,
       },
     };
   },
 
   methods: {
     async login() {
+      try{
       const { data } = await axios.post(
         "http://localhost:1337/api/auth/local",
         {
@@ -63,12 +71,17 @@ export default {
             localStorage.setItem("role", JSON.stringify(item.data.role.type))
             localStorage.setItem("nome", JSON.stringify(data.user));
             localStorage.setItem("usuario", JSON.stringify(data));
+            this.form.estado = true
+            await new Promise(resolve => setTimeout(resolve, 1000));
             this.$router.push("home");
         } catch (error) {
-            alert("erro")
+          this.form.estado = false
         }
       }
-    },
+    }catch(error){
+      this.form.estado = false
+    }
+    }
   },
 };
 </script>
@@ -79,10 +92,10 @@ form {
   flex-direction: column;
   width: 70%;
   padding-left: 20px;
-  padding-top: 50px;
+  margin-top: 50px;
+  
 }
-a {
-}
+
 
 label {
   text-align: start;
@@ -106,7 +119,7 @@ input:focus {
 }
 .btn {
   width: 100%;
-  margin-top: 50px;
+  margin-top: 10%;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,18 +1,24 @@
 <template>
   <div class="formulario">
+    <div v-if="form.estado == false" class="alert alert-warning" role="alert">
+      Algo de errado aconteceu com o editar
+    </div>
+    <div v-if="form.estado == true" class="alert alert-success" role="alert">
+      produto editado com sucesso
+    </div>
     <form>
       <label for="nome">Nome</label>
-      <input type="text" id="nome" autocomplete="off" v-model="form.name" />
+      <input type="text" id="nome" autocomplete="off" v-model="form.name" required/>
       <label for="preco">Preço</label>
-      <input type="number" id="preco" v-model="form.price" />
+      <input type="number" id="preco" v-model="form.price" required/>
       <label for="descricao">Descrição</label>
-      <input type="text" id="descricao" v-model="form.description" />
+      <input type="text" id="descricao" v-model="form.description" required/>
       <label for="imagem">Link Imagem</label>
-      <input type="text" id="imagem" v-model="form.image" />
+      <input type="text" id="imagem" v-model="form.image" required/>
     </form>
     <div class="btn">
-      <button class="btn-cadastrar" @click="Editar($event)">Editar</button>
-      <button class="btn-cadastrar" @click="this.$router.push('painel')">
+      <button class="btn-cadastrar" @click="Editar($event)" >Editar</button>
+      <button class="btn-cadastrar" @click="this.$router.push('/painel')">
         Voltar
       </button>
     </div>
@@ -29,6 +35,7 @@ export default {
         price: "",
         description: "",
         image: "",
+        estado: null
       },
     };
   },
@@ -49,7 +56,7 @@ export default {
       this.form.description = data.data.attributes.description;
       this.form.image = data.data.attributes.image;
     } catch (error) {
-      console.log("erro");
+      alert("imposivel editar o produto")
     }
   },
   methods: {
@@ -69,11 +76,15 @@ export default {
             headers: { Authorization: `Bearer ${token.jwt}` },
           }
         );
+        this.form.estado = true
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        this.form.estado = null
       } catch (error) {
-        console.log("erro");
+        this.form.estado = false
       }
     },
-  },
+
+  }
 };
 </script>
 

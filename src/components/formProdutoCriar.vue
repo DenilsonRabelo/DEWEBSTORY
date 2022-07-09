@@ -1,6 +1,13 @@
 <template>
     <div class="formulario">
+        
         <form >
+            <div v-if="form.estado == false" class="alert alert-warning" role="alert">
+            Algo de errado aconteceu ao criar
+            </div>
+            <div v-if="form.estado == true" class="alert alert-success" role="alert">
+            produto craido com sucesso
+            </div>
             <label for="nome">Nome</label>
             <input type="text" id="nome" autocomplete="off"  v-model="form.name" >
             <label for="preco">Preço</label>
@@ -25,9 +32,10 @@ export default {
         return {
             form:{
             name: "",
-            price: "",
             description: "",
             image: "",
+            price: "",
+            estado : null
             }
         }
     },
@@ -37,13 +45,21 @@ export default {
             let token = localStorage.getItem("usuario")
             token = JSON.parse(token)
             try {
-            await axios.post('http://localhost:1337/api/produtos',this.form,{
-                headers: {Authorization: `Bearer ${token.jwt}`}
+            await axios.post('http://localhost:1337/api/produtos',{
+                "data": {
+                "name": this.form.name,
+                "description": this.form.description,
+                "price": this.form.price,
+                "image": this.form.image,
+            }},{
+                headers: {Authorization: `Bearer ${token.jwt}`},
             })
+            this.form.estado = true
+            await new Promise(resolve => setTimeout(resolve, 5000));
             this.$router.push('painel')
             console.log("foi")
             } catch (error) {
-                console.log("erro")
+                this.form.estado = false
             }
         }
     }

@@ -1,6 +1,7 @@
 <template>
     <div class="nav">
         <a class="btn btn-outline-dark" @click="criar">Criar</a>
+        <a class="btn btn-outline-dark" @click="voltar">Voltar</a>
     </div>
 </template>
 
@@ -10,6 +11,9 @@ export default {
     methods: {
         criar(){
             this.$router.push("criar");
+        },
+        voltar(){
+            this.$router.push("/home");
         }
     }
 }
