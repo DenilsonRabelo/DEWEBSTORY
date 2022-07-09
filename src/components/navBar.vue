@@ -12,7 +12,7 @@
         {{nome}}
       </button>
       <ul class="dropdown-menu">
-        <li><a class="logout" @click="logout()">Logout</a></li>
+        <li v-if="adm"><a class="logout" @click="logout()">Logout</a></li>
         <li><a class="painel" v-if="adm == 'admin'" @click="$router.push('/painel')">Painel</a></li>
       </ul>
     </div>
