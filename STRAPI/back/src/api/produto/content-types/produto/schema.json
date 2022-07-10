@@ -13,20 +13,23 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "description": {
       "type": "richtext"
     },
-    "price": {
-      "required": true,
-      "default": 0,
-      "type": "decimal",
-      "min": 0
-    },
     "image": {
       "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "qtd": {
+      "type": "integer"
+    },
+    "venda": {
+      "type": "integer",
+      "default": 0
     }
   }
 }
