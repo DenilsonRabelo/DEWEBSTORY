@@ -15,6 +15,8 @@
       <input type="text" id="descricao" v-model="form.description" required/>
       <label for="imagem">Link Imagem</label>
       <input type="text" id="imagem" v-model="form.image" required/>
+      <label for="qtd">Quantidade</label>
+      <input type="number" id="qtd" v-model="form.qtd" required/>
     </form>
     <div class="btn">
       <button class="btn-cadastrar" @click="Editar($event)" >Editar</button>
@@ -35,6 +37,7 @@ export default {
         price: "",
         description: "",
         image: "",
+        qtd: "",
         estado: null
       },
     };
@@ -55,6 +58,7 @@ export default {
       this.form.price = data.data.attributes.price;
       this.form.description = data.data.attributes.description;
       this.form.image = data.data.attributes.image;
+      this.form.qtd = data.data.attributes.qtd;
     } catch (error) {
       alert("imposivel editar o produto")
     }
@@ -71,7 +75,8 @@ export default {
                 name: this.form.name,
                 price: this.form.price,
                 description: this.form.description,
-                image: this.form.image
+                image: this.form.image,
+                qtd : this.form.qtd
             }},{
             headers: { Authorization: `Bearer ${token.jwt}` },
           }
@@ -79,6 +84,7 @@ export default {
         this.form.estado = true
         await new Promise(resolve => setTimeout(resolve, 5000));
         this.form.estado = null
+        this.$router.push("/painel")
       } catch (error) {
         this.form.estado = false
       }

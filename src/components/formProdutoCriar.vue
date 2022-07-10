@@ -6,7 +6,7 @@
             Algo de errado aconteceu ao criar
             </div>
             <div v-if="form.estado == true" class="alert alert-success" role="alert">
-            produto craido com sucesso
+            produto criado com sucesso
             </div>
             <label for="nome">Nome</label>
             <input type="text" id="nome" autocomplete="off"  v-model="form.name" >
@@ -16,6 +16,8 @@
             <input type="text" id="descricao" v-model="form.description" >
             <label for="imagem">Link Imagem</label>
             <input type="text" id="imagem" v-model="form.image">
+            <label for="qtd">Quantidade</label>
+            <input type="number" id="qtd" v-model="form.qtd">
             <div class="btn">
                 <button class="btn-cadastrar cadastrar" @click="Criar($event)">Criar</button>
                 <button class="btn-cadastrar voltar" @click="this.$router.push('painel')">Voltar</button>
@@ -35,6 +37,7 @@ export default {
             description: "",
             image: "",
             price: "",
+            qtd: "",
             estado : null
             }
         }
@@ -51,6 +54,7 @@ export default {
                 "description": this.form.description,
                 "price": this.form.price,
                 "image": this.form.image,
+                "qtd": this.form.qtd
             }},{
                 headers: {Authorization: `Bearer ${token.jwt}`},
             })

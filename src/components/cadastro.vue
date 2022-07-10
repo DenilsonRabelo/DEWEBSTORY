@@ -1,34 +1,36 @@
 <template>
   <div class="a">
     <div v-if="form.estado == false" class="alert alert-warning" role="alert">
-      Algo de errado aconteceu com o login
+      Algo de errado aconteceu com o Cadastro
     </div>
     <div v-if="form.estado == true" class="alert alert-success" role="alert">
       Cadastro realizado
     </div>
-    <form>
+    <form class="needs-validation" novalidate>
       <label for="text">Nome</label>
       <input
         type="text"
         id="nome"
         placeholder="Digite seu nome"
         autocomplete="off"
-        v-model="form.username"
+        v-model="form.username" required
       />
+      
       <label for="email">Email</label>
       <input
         type="email"
         id="email"
         placeholder="Digite seu email"
         autocomplete="off"
-        v-model="form.email"
+        v-model="form.email" required
       />
+      
       <label for="senha">Senha</label>
       <input
         type="password"
         id="senha"
         placeholder="Digite sua senha"
-        v-model="form.password"
+        v-model="form.password" required
       />
     </form>
     <div class="btn">
@@ -52,9 +54,12 @@ export default {
       },
     };
   },
+
   methods: {
     async cadastrar() {
       try {
+        const verifica = this.varificar()
+        if(verifica){
         const response = await axios.post(
           "http://localhost:1337/api/users",
           this.form
@@ -62,11 +67,23 @@ export default {
         this.form.estado = true
         await new Promise(resolve => setTimeout(resolve, 1000));
         this.$router.push("Login");
+        }
       } catch (error) {
         this.form.estado = false
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        this.form.estado = null
       }
+      
     },
-  },
+    varificar(){
+        if (this.form.username == '' ||  !this.form.email.includes("@") || this.form.email == '' || this.form.password.length < 6 ){
+            this.form.estado = false
+            return false
+        }else {
+            return true
+        }
+    }
+}
 };
 </script>
 

@@ -6,9 +6,11 @@
     </div>
     <div class="card-body p-4">
       <div class="text-center">
-        <h5 class="fw-bolder">{{ produtos.attributes.name }}</h5>
-        <p>{{ produtos.attributes.description }}</p>
-        <span>{{ produtos.attributes.price }}</span>
+        <h5 class="fw-bolder">Nome: {{ produtos.attributes.name }}</h5>
+        <p>Descrição: {{ produtos.attributes.description }}</p>
+        <span>Preço: {{ produtos.attributes.price }}</span><br>
+        <span v-if="produtos.attributes.qtd <= 0" class="red">Quantidade: {{ produtos.attributes.qtd }}</span>
+        <span v-else >Quantidade: {{ produtos.attributes.qtd }}</span>
       </div>
     </div>
     <div class="card-footer bg-transparent">
@@ -81,6 +83,10 @@ export default {
 }
 .card:hover {
   transform: scale(1.1);
+}
+
+.red {
+  color: red;
 }
 
 .delete {

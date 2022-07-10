@@ -1,11 +1,11 @@
 <template>
   <div class="navbar">
     <nav>
-      <h2 class="logo"><span class="texto-logo">DEWEBSTORY</span></h2>
+      <h2 class="logo"><a href="#" @click="home"><span class="texto-logo">DEWEBSTORY</span></a></h2>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Sobre</a></li>
-        <li><a href="#">Serviços</a></li>
+        <li><a  href="#" @click="home">Home</a></li>
+        <li><a href="#" @click="sobre">Sobre</a></li>
+        <li><a href="#" @click="servicos">Serviços</a></li>
       </ul>
       <div class="btn-group">
       <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -47,6 +47,15 @@ import axios from 'axios';
           localStorage.removeItem('role')
           this.$router.push('/login')
       },
+      home(){
+        this.$router.push("/home")
+      },
+      sobre(){
+        this.$router.push("/sobre")
+      },
+      servicos(){
+        this.$router.push("/servicos")
+      }
     }
     
 }
