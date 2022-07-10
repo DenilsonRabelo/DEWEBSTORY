@@ -31,10 +31,10 @@
         <img src="../assets/undraw_Experience_design_re_ca7l.png" class="d-block w-100" alt="..." />
       </div>
       <div class="carousel-item">
-        <img src="../assets/undraw_Experience_design_re_ca7l.png" class="d-block w-100" alt="..." />
+        <img src="../assets/undraw_Cooking_re_g99p.png" class="d-block w-100" alt="..." />
       </div>
       <div class="carousel-item">
-        <img src="../assets/undraw_Experience_design_re_ca7l.png" class="d-block w-100" alt="..." />
+        <img src="../assets/undraw_Engineering_team_re_fvat.png" class="d-block w-100" alt="..." />
       </div>
     </div>
     <button
@@ -69,4 +69,8 @@
         background: white;
         
     }
+    img {
+      max-height: 500px;
+    }
+   
 </style>

@@ -6,13 +6,14 @@
             <div class="card-body p-4">
                 <div class="text-center">
                     <h5 class="fw-bolder">Nome: {{ produtos.attributes.name }}</h5>
-                    <p>Descrição {{produtos.attributes.description}}</p>
-                    <span>Preço {{produtos.attributes.price}}</span>
+                    <p>Descrição: {{produtos.attributes.description}}</p>
+                    <span>Preço: R$ {{produtos.attributes.price}}</span>
                 </div>
             </div>
             <div class="card-footer bg-transparent">
                 <div class="text-center">
-                    <button class="btn btn-outline-dark mt-auto" :disabled='produtos.attributes.qtd <= 0' href="#" @click="comprar(produtos.id, produtos.attributes.image, produtos.attributes.name, produtos.attributes.description, produtos.attributes.price, produtos.attributes.qtd)">Comprar</button>
+                    <button class="btn btn-outline-dark mt-auto" :disabled='produtos.attributes.qtd <= 0' href="#" @click="comprar(produtos.id, produtos.attributes.image, produtos.attributes.name, produtos.attributes.description,
+                     produtos.attributes.price, produtos.attributes.qtd, produtos.attributes.venda)">Comprar</button>
                 </div>
             </div>
     </div>
@@ -40,7 +41,7 @@ export default {
         link = produtos.attributes.image
         return `${link}`
     },
-    async comprar(id, image, nome, descricao, preco, qtd){
+    async comprar(id, image, nome, descricao, preco, qtd, vendas){
         let token = localStorage.getItem("usuario");
         token = JSON.parse(token);
         try {
@@ -50,7 +51,8 @@ export default {
                 "description": descricao,
                 "price": preco,
                 "image": image,
-                "qtd": qtd-1
+                "qtd": qtd-1,
+                "venda": vendas+1
             }},{
             headers: { Authorization: `Bearer ${token.jwt}` },
           })

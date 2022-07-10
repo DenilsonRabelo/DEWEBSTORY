@@ -10,7 +10,8 @@
         <p>Descrição: {{ produtos.attributes.description }}</p>
         <span>Preço: {{ produtos.attributes.price }}</span><br>
         <span v-if="produtos.attributes.qtd <= 0" class="red">Quantidade: {{ produtos.attributes.qtd }}</span>
-        <span v-else >Quantidade: {{ produtos.attributes.qtd }}</span>
+        <span v-else >Quantidade: {{ produtos.attributes.qtd }}</span><br>
+        <span>Vendas : {{produtos.attributes.venda}}</span>
       </div>
     </div>
     <div class="card-footer bg-transparent">
