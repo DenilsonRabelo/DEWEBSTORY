@@ -43,8 +43,14 @@ Operações implementadas para cada entidade
 
 | Metodos HTTP | URL |
 | --- | --- |
-| GET | api/entidade1/|
-| POST | api/entidade2 |
+| GET | api/users/me|
+| POST | api/auth/local |
+| POST | api/users |
+| DELETE | api/produtos/:id |
+| GET | api/produtos |
+| POST | api/produtos |
+| GET | api/produtos/:id |
+| PUT | api/produtos/:id |
 
 
 
