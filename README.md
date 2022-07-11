@@ -1,6 +1,57 @@
 # DEWEBSTORY
 
+Nosso projeto faz o gerenciamento de um e-commerce além de realizar login e cadastro de usuarios do sistema.
+
+## Membros da equipe
+
+- Denilson Rabelo Dos Santos
+- Antonio Elliton Dias Gomes
+
+## Tecnologias e frameworks utilizados
+
+**Frontend:**
+
+Vue.js.
+Css.
+Html.
+
+**Backend:**
+
+Node.js.
+Strapi.
+Javascript.
+
+## Papeis ou tipos de usuários do sistema
+
+Ex de papeis:
+Admin, Publico, Authenticado
+## Entidades, Tabelas ou Coleções utilizadas
+
+- Produtos
+- Users
+
+Operações implementadas para cada entidade
+
+| Entidade| Create | Read | Update | Delete |
+| --- | --- | --- | --- | --- |
+| Produtos | X |  X  | X | X |
+| User | X |  X  |  X |  |
+
+
+## Rotas da API REST utilizadas
+
+
+| Metodos HTTP | URL |
+| --- | --- |
+| GET | api/entidade1/|
+| POST | api/entidade2 |
+
+
+
+
 This template should help get you started developing with Vue 3 in Vite.
+
+
 
 ## Recommended IDE Setup
 
